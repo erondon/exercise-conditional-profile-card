@@ -11,35 +11,27 @@ function render(variables = {}) {
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
   let name = `${variables.name}`;
-  if (variables.name == null) cover = "<h1>Default</h1>";
+  if (variables.name == null) name = "Eleazar";
 
   let lastname = `${variables.lastname}`;
-  if (variables.lastname == null) cover = "<h1>Default</h1>";
+  if (variables.lastname == null) lastname = "Rondon";
 
   //twitter
   let twitter = `${variables.twitter}`;
-  if (variables.twitter == null)
-    twitter =
-    '<li><a href="https://twitter.com/alesanchezr"><i class="fa fa-twitter"></i></a></li>';
+  if (variables.twitter == null) twitter = "alesanchezr";
 
   //instagram
   let instagram = `${variables.instagram}"`;
-  if (variables.instagram == null)
-    instagram =
-    '<li><a href="https://instagram.com/alesanchezr"><i class="fa fa-instagram"></i></a></li>';
+  if (variables.instagram == null) instagram = "alesanchezr";
 
   //linkedin
   let linkedin = `${variables.linkedin}`;
-  if (variables.linkedin == null)
-    linkedin =
-    '<li><a href="https://linkedin.com/alesanchezr"><i class="fa fa-instagram"></i></a></li>';
+  if (variables.linkedin == null) linkedin = "alesanchezr";
 
   // github
 
   let github = `${variables.github}"`;
-  if (variables.github == null)
-    github =
-    '<li><a href="https://github.com/alesanchezr"><i class="fa fa-github"></i></a></li>';
+  if (variables.github == null) github = "alesanchezr";
 
   // sm position
 
@@ -135,9 +127,9 @@ function render(variables = {}) {
             <li><a href="https://github.com/${
               variables.github
             }"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://twitter.com/${
+            <li><a href="https://instagram.com/${
               variables.twitter
-            }"><i class="fa fa-twitter"></i></a></li>
+            }"><i class="fa fa-instagram"></i></a></li>
             <li><a href="https://linkedin.com/${
               variables.linkedin
             }"><i class="fa fa-linkedin"></i></a></li>
@@ -149,7 +141,7 @@ function render(variables = {}) {
 /**
  * Don't change any of the lines below, here is where we do the logic for the dropdowns
  */
-window.onload = function () {
+window.onload = function() {
   window.variables = {
     // if includeCover is true the algorithm should
     includeCover: true,
@@ -160,29 +152,29 @@ window.onload = function () {
     // social media bar position (left or right)
     socialMediaPosition: "left",
     // social media usernames
-    twitter: null,
+    twitter: "alesanchezr",
     github: "alesanchezr",
-    linkedin: null,
-    instagram: null,
-    name: null,
-    lastname: null,
-    role: null,
-    country: null,
-    city: null
+    linkedin: "alesanchezr",
+    instagram: "alesanchezr",
+    name: "Alejandro",
+    lastname: "Sanchez",
+    role: "Web Developer",
+    country: "Venezuela",
+    city: "Caracas"
   };
   render(window.variables);
-  document.querySelectorAll(".picker").forEach(function (elm) {
-    elm.addEventListener("change", function (e) {
+  document.querySelectorAll(".picker").forEach(function(elm) {
+    elm.addEventListener("change", function(e) {
       const attribute = e.target.getAttribute("for");
       let values = {};
       values[attribute] =
-        this.value == "" ?
-        null :
-        this.value == "true" ?
-        true :
-        this.value == "false" ?
-        false :
-        this.value;
+        this.value == ""
+          ? null
+          : this.value == "true"
+            ? true
+            : this.value == "false"
+              ? false
+              : this.value;
       render(Object.assign(window.variables, values));
     });
   });
